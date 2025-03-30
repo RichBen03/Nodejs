@@ -28,7 +28,9 @@ order( ()=>console.log("Shop is open do you want to buy anything?") , 1700)
 
 // Promise chaining
 
-.then(`${stocks.fruits[1]} was selected as an order`)
+.then(()=>{
+    return order(()=>console.log(`${stocks.fruits[0]} was selected as an order`), 1500)
+})
 
 .then(()=>{
     return order(()=>console.log("Production has started"),2000 )
@@ -54,11 +56,8 @@ order( ()=>console.log("Shop is open do you want to buy anything?") , 1700)
     return order(()=>console.log("Juice has been served"),2000)
 })
 
-.catch((err)=>{console.log(err)})
+.catch(()=>{console.log("The customer left")})
 
 .finally(()=>{
-    setTimeout(() => {
-        console.log("Finished serving our customers for the day")
-    }, 10000);
-   
+        console.log("Day ended,shop closed")
 })
